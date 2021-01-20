@@ -1,36 +1,45 @@
-// #include<iostream.h>
-#include<stdio.h>
-#include<stdlib.h>
-struct Node{
+#include<iostream>
+using namespace std;
+class Node{
+    public:
     int data;
-    struct Node * next;
-}*first=NULL;
+    Node *next=NULL;
+    Node(int data){
+        this->data=data;
+    }
+};
+Node* input(){
+    int data;
+    cin>>data;
+    Node* head=NULL;
+    while(data != -1){
+        Node* n=new Node(data);
 
-void create(int A[], int n){
-    struct Node *t, *last;
-    int i;
-    first=(struct Node*)malloc(sizeof(struct Node));
-    first->data=A[0];
-    first->next=NULL;
-    last=first;
-    for (i=1;i=n;i++){
-        t=(struct Node*)malloc(sizeof(struct Node));
-        t->data = A[i];
-        t->next=NULL;
-        last->next;
-        last=t;
+        if(head==NULL){
+            head=n;
+        }
+        else{
+            Node* temp=head;
+            while(temp->next != NULL){
+                temp=temp->next;
+            }
+            temp->next=n;
+        }
+    cin>>data;
+    }
+    return head;
+}
+
+void print(Node *head){
+    Node* temp;
+    temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<endl;
+        temp=temp->next;
     }
 }
-void Display(struct Node *p){
-    while(p){
-        printf("%d", p->data);
-        p=p->next;
-    }
-}
+
 int main(){
-    int A[]={13,23,43,32,12};
-    create(A,5);
-    Display(first);
-
+    Node* head=input();
+    print(head);
 }
-
