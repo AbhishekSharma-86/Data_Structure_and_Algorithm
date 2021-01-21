@@ -27,6 +27,7 @@ Node* input(){
         }
         temp->next=n;
     }
+    
     cout<<"Enter your choice, You wanna insert more data y/n:";
     cin>>a;
     }
@@ -69,6 +70,7 @@ int main(){
     Display(head);
     int data;
     int i;
+    cout<<endl;
     cout<<"Enter the data and the position :"<<endl;
     cin>>data;
     cin>>i;
