@@ -1,12 +1,6 @@
 #include<iostream>
 using namespace std;
-int main(){
-    int n;
-    cin>>n;
-    int A[n];
-    for(int i=0; i<n; i++){
-        cin>>A[i];
-    }
+void insersionSort(int A[],int n){
     for(int i=1; i<n;i++){
         int no=A[i];
         int j=i-1;
@@ -16,6 +10,16 @@ int main(){
             }
             A[j+1]=no;
     }
+}
+int main(){
+    int n;
+    cin>>n;
+    int A[n];
+    for(int i=0; i<n; i++){
+        cin>>A[i];
+    }
+    insersionSort(A,n);
+    
     for (int i=0;i<n;i++){
         cout<<A[i]<<endl;
     }
