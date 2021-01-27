@@ -2,11 +2,7 @@
 #include<stdio.h>
 
 int main()
-{
-    printf("Name-Abhishek Sharma");
-    printf("Enrollment no. 12314802719");
-
-    int x;
+{   int x;
     printf("Enter the size of array:");
     scanf("%d",&x);
 
