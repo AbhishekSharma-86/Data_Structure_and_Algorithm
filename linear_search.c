@@ -2,7 +2,8 @@
 #include<stdio.h>
 
 int main()
-{   int x;
+{   
+    int x;
     printf("Enter the size of array:");
     scanf("%d",&x);
 
