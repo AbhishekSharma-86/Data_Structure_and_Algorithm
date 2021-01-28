@@ -1,50 +1,48 @@
 #include<iostream>
 using namespace std;
-void merge(int A[],int l, int mid, int r){
-    int n1=mid-l+1;
-    int n2=r-mid;
-    int a[n1];  ///temporary array 
-    int b[n2];  ///temporary array 
-    for(int i=0;i<n1;i++){
-        a[i]=A[i+l];
-    }
-    for(int i=0;i<n2;i++){
-        b[i]=A[i+mid+1];
-    }
-    int i=0;
-    int j=0;
-    int k;
-    while(i<n1 && j<n2){
-        if(a[i]<b[j]){
-            A[k]=a[i];
+void merge(int A[], int l, int r){
+    int mid=(l+r)/2;
+    int i=l;
+    int j=mid+1;
+    int k=l;
+    int temp[50];
+    while (i<=mid && j<=r)
+    {
+        if(A[i]<A[j]){
+            temp[k]=A[i];
             k++;
             i++;
-
         }
         else{
-            A[k]=b[j];
+            temp[k]=A[j];
             k++;
-            i++;
+            j++;
         }
-
     }
-    while(i<n1){
-        A[k]=a[i];
+    while(i<=mid){
+        temp[k]=A[i];
         k++;
         i++;
     }
-    while(j<n2){
-        A[k]=b[j];
+    while(j<=r){
+        temp[k]=A[j];
         k++;
         j++;
     }
+    for(int n=l;n<=r;n++){
+        A[n]=temp[n];
+    }
+    
+    
+
 }
 void mergeSort(int A[], int l, int r){
-    if(l<r){
-        int mid= (l+r)/2;
+    int mid;
+    if (l<r){
+        mid=(l+r)/2;
         mergeSort(A,l,mid);
         mergeSort(A,mid+1,r);
-        merge(A,l,mid,r);
+        merge(A,l,r);
     }
 }
 int main(){
@@ -54,12 +52,8 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>A[i];
     }
-    for(int i=0;i<n;i++){
-        cout<<A[i]<<endl;
-    }
     mergeSort(A,0,n);
     for(int i=0;i<n;i++){
-        cout<<A[i]<<endl;
+        cout<<A[i]<<" , ";
     }
-    
 }
