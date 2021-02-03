@@ -10,6 +10,17 @@ class Node{
     }
 };
 
+Node* reverse_better(Node* head){
+    if(head->next == NULL || head == NULL){
+        return head;
+    }
+    Node* smallans = reverse_better(head->next);
+    Node* tail=head->next;
+    tail->next=head;
+    head->next=NULL;
+    return smallans;
+}
+
 Node* reverse(Node* head){
     if(head->next == NULL){
         return head;
@@ -58,6 +69,6 @@ int main(){
     Node* head=insert();
     Display(head);
     cout<<endl;
-    Node* reverseHead=reverse(head);
+    Node* reverseHead=reverse_better(head);
     Display(reverseHead);
 }
