@@ -2,7 +2,11 @@
 #include<stdio.h>
 
 int main()
+<<<<<<< HEAD
 {   
+=======
+{  
+>>>>>>> master
     int x;
     printf("Enter the size of array:");
     scanf("%d",&x);
