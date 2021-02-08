@@ -39,15 +39,20 @@ class Stack{
         return data[currentIndex];
     }
     void push(int entry){
-        if(currentIndex < capacity){
+        if(currentIndex == capacity){
+            int* newdata = new int[capacity*2];
+            for(int i=0; i<capacity; i++){
+                newdata[i]=data[i];
+            }
+            capacity *= 2;
+            delete []data;
+            data = newdata;
             data[currentIndex]=entry;
             currentIndex++;
             }
         else{
-            int* newdata = new int[capacity*2];
-            capacity *= 2;
-            delete []data;
-            data = newdata;
+            data[currentIndex]=entry;
+            currentIndex++;
         }
     }
 };
