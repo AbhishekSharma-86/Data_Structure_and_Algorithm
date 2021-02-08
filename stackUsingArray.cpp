@@ -8,10 +8,10 @@ class Stack{
     int capacity;
 
     public:
-    Stack(int size){
-        data= new int[size];
+    Stack(){
+        data= new int[4];
         currentIndex=0;
-        capacity=size;
+        capacity=4;
     }
 
     int top(){
@@ -44,17 +44,17 @@ class Stack{
             currentIndex++;
             }
         else{
-            cout<<"stack is full"<<endl;
-            return;
+            int* newdata = new int[capacity*2];
+            capacity *= 2;
+            delete []data;
+            data = newdata;
         }
     }
 };
 
 
 int main(){
-    int size;
-    cin>>size;
-    Stack s(size);
+    Stack s;
     int element;
     char a='y';
     while(a == 'y'){
@@ -65,6 +65,7 @@ int main(){
     }
     
     cout<<s.top()<<endl;
+    cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;

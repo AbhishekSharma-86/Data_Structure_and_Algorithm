@@ -35,110 +35,25 @@ Node* insert(){
     return head;
 
 }
-// Node* merge(Node* head1, Node* head2){
-//     Node* fh=NULL;
-//     Node* ft=NULL;
-//     Node* t=NULL;
-//     if(head1->data < head2->data){
-//        fh=head1;
-//        t=head1;
-//    }
-//     else{
-//        fh=head2;
-//        t=head2;
-//    }
-//     while(head1->next != NULL && head2->next != NULL){
-//         if(head1->data < head2->data){
-//             ft=head1;
-       
-//             while(t->next !=NULL){
-//                 t=t->next;      
-//             }
-//                 t->next=ft;
-//                 head1=head1->next;
-//     }
-//         else{
-//             ft=head2;
-//             while(t->next !=NULL){
-//                 t=t->next;
-//             }
-//                 t->next=ft;
-//             head2=head2->next;
-//         }
-//    }
-//     while(head1 -> next != NULL){
-//        ft=head1;
-//        while(t->next !=NULL){
-//                 t=t->next;
-//             }
-//             t->next=ft;
-//        head1=head1->next;
-       
-//    }
-//    while(head2->next != NULL){
-//        ft=head2;
-//        while(t->next !=NULL){
-//                 t=t->next;
-//             }
-//             t->next=ft;
-//        head2=head2->next;
-//    }
-   
-//     return fh;
-// }
-
 Node* merge(Node* head1, Node* head2){
-    Node* fh=NULL;
     Node* ft=NULL;
+    Node* fh=NULL;
     Node* t=NULL;
+
     if(head1->data < head2->data){
         fh=head1;
-        ft=head1;
         t=head1;
     }
     else{
         fh=head2;
-        ft=head2;
         t=head2;
     }
-
-    while(head1->next != NULL && head2->next != NULL){
+    while(head1->next !=NULL && head2->next != NULL){
         if(head1->data < head2->data){
             ft=head1;
-            while(t->next != NULL){
-                t= t->next;
-            }
-            t->next=ft;
-            head1 = head1->next;
-
-
-        }
-        else{
-            ft=head2;
-            while (t->next != NULL){
-                t= t->next;
-            }
-            t->next=ft;
-            head2= head2->next;
         }
     }
-    while(head1->next != NULL){
-        ft=head1;
-            while(t->next != NULL){
-                t= t->next;
-            }
-            t->next=ft;
-            head1 = head1->next;
-    }
-    while(head2->next != NULL ){
-        ft=head2;
-            while (t->next != NULL){
-                t= t->next;
-            }
-            t->next=ft;
-            head2= head2->next;
-    }
-    return fh;
+
 }
 
 
