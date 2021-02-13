@@ -29,13 +29,16 @@ class Stack{
     }
     int pop(){
         int a;
+        Node* temp=NULL;
         if(head==NULL){
             cout<<"stack is empty"<<endl;
             return 0;
         }
         else{
             a = head->data;
+            temp=head;
             head = head->next;
+            delete temp;
             count--;
             return a;
            
@@ -66,6 +69,7 @@ int main(){
     s.push(40);
     s.push(50);
     cout<<s.top()<<endl;
+    cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;
     cout<<s.pop()<<endl;
