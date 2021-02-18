@@ -10,9 +10,13 @@ class Node{
 };
 class Stack{
     Node* head;
-    int count=0;
+    int count;
 
     public:
+    Stack(){
+        head = NULL;
+        count = 0;
+    }
     void push(int element){
         if(head==NULL){
             Node* n = new Node(element);

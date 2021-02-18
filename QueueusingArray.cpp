@@ -44,6 +44,15 @@ class Queue{
             return ans;
         }
     }
+    int front(){
+        if(currentIndex == 0){
+            cout<<"Queue is empty"<<endl;
+            return 0;
+        }
+        else{
+            return que[0];
+        }
+    }
     bool isEmpty(){
         return !currentIndex;
     }
@@ -60,6 +69,7 @@ int main(){
     q1.enQueue(30);
     q1.enQueue(40);
     q1.enQueue(50);
+    cout<<q1.front()<<endl;
     cout<<q1.deQueue()<<endl;
     cout<<q1.deQueue()<<endl;
     cout<<q1.deQueue()<<endl;

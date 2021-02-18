@@ -78,6 +78,4 @@ int main(){
     cout<<q1.Size()<<endl;
     cout<<q1.isEmpty()<<endl;
 
-    
-
 }
