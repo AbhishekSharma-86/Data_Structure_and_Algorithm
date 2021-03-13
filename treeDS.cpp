@@ -12,20 +12,36 @@ class treeNode{
 
 };
 
+treeNode* takeInput(){
+    int rootData;
+    cout<<"Enter the data: ";
+    cin>>rootData;
+    treeNode* root = new treeNode(rootData);
+    cout<<"Enter the number of children of "<<rootData<<endl;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        treeNode* child =  takeInput();
+        root->children.push_back(child);
+
+    }
+    return root;
+}
+
 void print(treeNode* root){
-    cout<<root->data<<endl;
+    cout<<root->data<<":";
     for(int i=0;i < root->children.size(); i++){
+        cout<<root->children[i]->data<<",";
+    }
+    cout<<endl;
+    for(int i=0 ; i<root->children.size() ; i++){
         print(root->children[i]);
     }
 }
 
 
 int main(){
-    treeNode* root = new treeNode(10);
-    treeNode* Node1 = new treeNode(20);
-    treeNode* Node2 = new treeNode(30);
-    root->children.push_back(Node1);
-    root->children.push_back(Node2);
+    treeNode* root = takeInput();
     print(root);
 
 }
