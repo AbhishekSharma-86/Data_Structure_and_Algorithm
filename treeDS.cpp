@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 class treeNode{
     public:
@@ -13,20 +14,30 @@ class treeNode{
 };
 
 treeNode* takeInput(){
-    int rootData;
-    cout<<"Enter the data: ";
-    cin>>rootData;
-    treeNode* root = new treeNode(rootData);
-    cout<<"Enter the number of children of "<<rootData<<endl;
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        treeNode* child =  takeInput();
-        root->children.push_back(child);
-
+    int data;
+    cout<<"Enter the root data: ";
+    cin>>data;
+    treeNode* root  = new treeNode(data);
+    queue<treeNode*> panding;
+    panding.push(root);
+    while(panding.size() != 0){
+        treeNode* front = panding.front();
+        panding.pop();
+        int n;
+        cout<<"Enter the number of childrens of "<<front->data<<": ";
+        cin>>n;
+        for(int i=0; i<n; i++){
+            int a;
+            cout<<"Enter the "<<i<<"th child of "<<front->data<<": ";
+            cin>>a;
+            treeNode* child = new treeNode(a);
+            front->children.push_back(child);
+            panding.push(child);
+        }
     }
     return root;
 }
+
 
 void print(treeNode* root){
     cout<<root->data<<":";
