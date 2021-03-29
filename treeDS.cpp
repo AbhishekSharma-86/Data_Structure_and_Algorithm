@@ -37,6 +37,17 @@ treeNode* takeInput(){
     }
     return root;
 }
+int heightOfTree(treeNode* root){
+    int count = 0;
+    
+    for(int i=0;i < root->children.size();i++){
+        int tempcount = heightOfTree(root->children[i]);
+        count = max(count,tempcount);
+    }
+    count++;
+    return count;
+
+}
 
 
 void print(treeNode* root){
@@ -50,11 +61,22 @@ void print(treeNode* root){
     }
 }
 
+int numNode(treeNode* root){
+    int ans = 1;
+    for(int i=0; i<root->children.size(); i++){
+        ans += numNode(root->children[i]);
+    }
+    return ans;
+}
+
 
 int main(){
     treeNode* root = takeInput();
     print(root);
-
+    cout<<"The number of Nodes is: "<<numNode(root)<<endl;
+    int c = heightOfTree(root);
+    cout<<"The height of the tree is: "<<c<<endl;
+    return 0;
 }
 
 
