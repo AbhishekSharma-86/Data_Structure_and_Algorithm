@@ -12,6 +12,11 @@ public:
     {
         this->data = data;
     }
+    ~treeNode(){
+        for(int i=0;i<children.size();i++){
+            delete children[i];
+        }
+    }
 };
 
 treeNode *takeInput()
@@ -62,8 +67,29 @@ void dataAtLevelK(treeNode* root, int k){
     for(int i = 0; i < root->children.size(); i++){
         dataAtLevelK(root->children[i], k-1);
     }
-
+    
 }
+void preorder(treeNode* root){
+    if(root==NULL){
+        return;
+    }
+    cout<<root->data<<endl;
+    for(int i=0;i<root->children.size();i++){
+        preorder(root->children[i]);
+    }
+}
+void postorder(treeNode* root){
+    if(root == NULL){
+        return;
+    }
+    
+    for(int i=0;i<root->children.size();i++){
+        postorder(root->children[i]);
+    }
+        cout<<root->data<<", ";
+    
+}
+
 
 void print(treeNode *root)
 {
@@ -96,6 +122,12 @@ int main()
     cout << "The number of Nodes is: " << numNode(root) << endl;
     int c = heightOfTree(root);
     cout << "The height of the tree is: " << c << endl;
+    cout<<"The data at level 3: ";
     dataAtLevelK(root, 3);
+    cout<<endl;
+    preorder(root);
+    cout<<endl;
+    postorder(root);
+    delete root;
     return 0;
 }
